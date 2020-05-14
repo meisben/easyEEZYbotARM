@@ -1,7 +1,7 @@
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 # Program Title: serial_communication.py
-# Program Purpose: Define EEZYbotARM_kinematics parent class and EEZYbotARM_Mk2 child class
+# Program Purpose: Manages serial communication between a computer (running python) and Arduino for the purpose of controlling the EEXYbotARM
 
 # **Version control**
 # v3.5 -> moving to github
@@ -15,11 +15,7 @@ import serial
 import time
 
 # ------------------------------------------#
-# Helper functions                          #
-# ------------------------------------------#
-
-# ------------------------------------------#
-# Parent class                              #
+# Main class                              #
 # ------------------------------------------#
 
 
@@ -36,10 +32,14 @@ class EEZYBotARM2Arduino:
     --Methods--
     Description of available methods in this class:    
         - __init__ --> Initialise an object instance
-        -  --> Update the stored joint angles for the robot arm
-        -  --> Check if any of the supplied joint angles are outside of physical limits
-
-
+        - connectToSerialPort--> Connects to Arduino serial port using pySerial.
+        - closeSerialPort--> Close serial port using pySerial.
+        - sendToArduino --> Sends data to Arduino
+        - recvFromArduino --> Receive data from Arduino
+        - waitForArduino --> Function waits until the Arduino sends 'Arduino Ready' - allows time for Arduino reset
+        - composeMessage --> Function composes a message (instruction) to send to the Arduino, this tells it where to position
+        the connected servo motors
+        - runTest --> Function runs a test to check communications with Arduino!
     """
 
     # Class attributes
@@ -48,12 +48,12 @@ class EEZYBotARM2Arduino:
     servoTime1 = 1000  # default times of servo movement
     servoTime2 = 1000
     servoTime3 = 1000
-    servoTimeEE = 1000
+    servoTimeEE = 500
     msg = "<BUZZ,90,90,90,90,1000,1000,1000,1000>"  # default message
 
     # Initializer / Instance attributes
 
-    def __init__(self, port="COM2"):
+    def __init__(self, port="COM18"):
         self.port = port
 
     # Include function here connect and pass joint angle
@@ -170,7 +170,7 @@ class EEZYBotARM2Arduino:
             print(msg)
             print("")
 
-    def composeMessage(self, servoAngle1, servoAngle2, servoAngle3, servoAngleEE=90, instruction="BUZZ", **kwargs):
+    def composeMessage(self, servoAngle_q1, servoAngle_q2, servoAngle_q3, servoAngle_EE=90, instruction="BUZZ", **kwargs):
         """
         --Description--
         Function composes a message (instruction) to send to the Arduino, this tells it where to position
@@ -180,10 +180,10 @@ class EEZYBotARM2Arduino:
         This function can take direct output (for joint angles q1, q2, q3) from the function 'map_kinematicsToServoAngles()'
 
         --Parameters--
-        @servoAngle1 -> the servo angle for servo #1, corresponding to q1
-        @servoAngle2 -> the servo angle for servo #2, corresponding to q2
-        @servoAngle3 -> the servo angle for servo #3, corresponding to q3
-        @servoAngleEE -> the servo angle for servo #0, corresponding to the end effector
+        @servoAngle_q1 -> the servo angle for servo #1, corresponding to q1
+        @servoAngle_q2 -> the servo angle for servo #2, corresponding to q2
+        @servoAngle_q3 -> the servo angle for servo #3, corresponding to q3
+        @servoAngle_EE -> the servo angle for servo #0, corresponding to the end effector
         @instruction -> the text instruction to send to the Arduino (BUZZ-> sounds buzzer), (LED -> flashes LED)
 
         --Optional **kwargs parameters--
@@ -204,10 +204,10 @@ class EEZYBotARM2Arduino:
         servoTimeEE = str(kwargs.get('servoTimeEE', self.servoTimeEE))
 
         # Compose message
-        message = "<" + ",".join([instruction, str(servoAngle1),
-                                  str(servoAngle2), str(servoAngle3), str(servoAngleEE)])
+        message = "<" + ",".join([instruction, str(servoAngle_EE),
+                                  str(servoAngle_q1), str(servoAngle_q2), str(servoAngle_q3)])
         message = message + "," + \
-            ",".join([servoTime1, servoTime2, servoTime3, servoTimeEE]) + ">"
+            ",".join([servoTimeEE, servoTime1, servoTime2, servoTime3]) + ">"
 
         self.msg = message
 
