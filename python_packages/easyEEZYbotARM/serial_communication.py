@@ -58,8 +58,34 @@ class EEZYBotARM2Arduino:
 
     # Include function here connect and pass joint angle
 
+    def __waitForArduino__(self):
+        """
+        --Description--
+        Function waits until the Arduino sends 'Arduino Ready' - allows time for Arduino reset.
+        It also ensures that any bytes left over from a previous message are discarded
+
+        --Parameters--
+        None
+
+        --Returns--
+        Function doesn't return a value
+
+        """
+
+        msg = ""
+        while msg.find("Arduino is ready") == -1:
+
+            # note changed to in_waiting, get the number of bytes in the input buffer
+            while self.serialPort.inWaiting() == 0:
+                pass
+
+            msg = self.recvFromArduino()
+
+            print(msg)
+            print("")
+
     # Instance methods
-    def connectToSerialPort(self, baudRate=9600, port=None):
+    def openSerialPort(self, baudRate=9600, port=None):
         """
         --Description--
         Connects to a serial port using pySerial.
@@ -144,32 +170,6 @@ class EEZYBotARM2Arduino:
 
         return(msg)
 
-    def waitForArduino(self):
-        """
-        --Description--
-        Function waits until the Arduino sends 'Arduino Ready' - allows time for Arduino reset.
-        It also ensures that any bytes left over from a previous message are discarded
-
-        --Parameters--
-        None
-
-        --Returns--
-        Function doesn't return a value
-
-        """
-
-        msg = ""
-        while msg.find("Arduino is ready") == -1:
-
-            # note changed to in_waiting, get the number of bytes in the input buffer
-            while self.serialPort.inWaiting() == 0:
-                pass
-
-            msg = self.recvFromArduino()
-
-            print(msg)
-            print("")
-
     def composeMessage(self, servoAngle_q1, servoAngle_q2, servoAngle_q3, servoAngle_EE=90, instruction="BUZZ", **kwargs):
         """
         --Description--
@@ -213,7 +213,7 @@ class EEZYBotARM2Arduino:
 
         return message
 
-    def runTest(self, testData):
+    def communicate(self, data, delay_between_commands=5):
         """
         --Description--
         Function runs a test to check communications with Arduino!
@@ -225,20 +225,22 @@ class EEZYBotARM2Arduino:
         Function doesn't return a value
 
         """
-
-        numLoops = len(testData)
+        # Declare variables
+        numLoops = len(data)
         waitingForReply = False
-
         n = 0
+
+        # wait for arduino to be ready
+        self.__waitForArduino__()
 
         while n < numLoops:
 
-            teststr = testData[n]
+            data_str = data[n]
 
             if waitingForReply == False:
-                self.sendToArduino(teststr)
+                self.sendToArduino(data_str)
                 print("Sent from PC -- LOOP NUM " +
-                      str(n) + " TEST STR " + teststr)
+                      str(n) + " TEST STR " + data_str)
                 waitingForReply = True
 
             if waitingForReply == True:
@@ -253,4 +255,4 @@ class EEZYBotARM2Arduino:
 
                 print("===========")
 
-            time.sleep(5)
+            time.sleep(delay_between_commands)
