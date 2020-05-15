@@ -38,7 +38,7 @@ The code library allows the user to easily map x,y,z co-ordinates to joint angle
 ## Installation 
 This code library is distributed with python and arduino components. The python code is responsible for high level kinematics calculations and simulation. The arduino code is responsbile for low level servo control.
 
-### Installation - python
+### Installation (python)
 
 This python code is distributed as a python package. A setup file is included and so dependent libraries should install with the package.
 
@@ -59,7 +59,7 @@ $pip install -e .
 
 A future aim is to distribute this module using pip
 
-### Installation - arduino
+### Installation (arduino)
 
 To install the arduino code it is as simple as uploading the sketch 'arduino_sketches\easyEEZYbotARM_Arduino_Communication' to the arduino microcontroller.
 
@@ -84,7 +84,9 @@ If you need help using this code libray, please in the first instance try googli
 
 ## Contributing
 
-Anyone is very welcome to contribute - please let me know. Best practice guidelines are here: https://opensource.guide/how-to-contribute/  
+Anyone is very welcome to contribute - please do. 
+
+Some useful best practice guidelines are here: https://opensource.guide/how-to-contribute/  
 
 ## Thanks and credit
 
