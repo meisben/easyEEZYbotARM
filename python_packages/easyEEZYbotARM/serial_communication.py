@@ -19,7 +19,7 @@ import time
 # ------------------------------------------#
 
 
-class EEZYBotARM2Arduino:
+class arduinoController:
     """
     --Description--
     This is a class for the EEZYBotARM2Arduino object
@@ -103,6 +103,9 @@ class EEZYBotARM2Arduino:
 
         self.serialPort = serial.Serial(port=self.port, baudrate=baudRate)
         print("Serial port " + port + " opened  Baudrate " + str(baudRate))
+
+        # wait for arduino to be ready
+        self.__waitForArduino__()
 
     def closeSerialPort(self, port=None):
         """
@@ -219,19 +222,21 @@ class EEZYBotARM2Arduino:
         Function runs a test to check communications with Arduino!
 
         --Parameters--
-        None
+        data-> a command string (returned by the composeMessage method) or a list of strings, which will be communicated to the arduino
+        delay_between_commands -> the time delay applied between a list of commands
 
         --Returns--
         Function doesn't return a value
 
         """
+        # convert data to list if it isn't already a list
+        if not isinstance(data, list):
+            data = [data]
+
         # Declare variables
         numLoops = len(data)
         waitingForReply = False
         n = 0
-
-        # wait for arduino to be ready
-        self.__waitForArduino__()
 
         while n < numLoops:
 

@@ -537,7 +537,7 @@ class EEZYbotARM:
         ax = fig.add_subplot(111, projection='3d')
 
         # add labels to the plot
-        ax.set(title="3-d plot for EEZYbotARM Mk2", xlabel="x (mm)",
+        ax.set(title="3-d simulation of EEZYbotARM Mk2", xlabel="x (mm)",
                ylabel="y (mm)", zlabel="z (mm)")
 
         # set axis equal
