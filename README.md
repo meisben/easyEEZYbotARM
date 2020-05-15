@@ -21,49 +21,54 @@ This code library provides function for the EEZYbotARM (Mk1, Mk2) to undertake:
 5. Communicating with a (arduino) microcontroller
 6. Using the (arduino) microcontroller to control the movement of the robot arm servo motors 
 
+The code library allows the user to easily convert x,y,z co-ordinates to joint angles, so that the EEZYbotARM can be controlled in 3-D space.
+
+![inverseKinematics](images/inverseKinematics.png)
+
 ## Installation (python)
 
 This code is bundelled as a python package. A setup file is included and so dependent libraries should install with the package.
 
-To install the package on Windows, OS X or Linux, download the zip file or clone the repository. Then cd to the setup directory and install the package using pip:
+To install the package on Windows, OS X or Linux, download the zip file or clone the repository. Then open a terminal window, cd to the setup directory and install the package using pip command:
 
 ```sh
-pip install .
+$pip install .
 ```
 
 To use with a virtual environment
 
 (1) create a virtual environment (e.g. using conda or venv). 
-(2) Then run the following command in the local directory of dobot_tactile_toolbox setup.py: 
+(2) Then run the following command from a terminal window in the local directory of dobot_tactile_toolbox setup.py: 
 
 ```sh
-pip install -e . 
+$pip install -e . 
 ```
 
 A future aim is to distribute this module using pip
 
 ## Installation (arduino)
 
-For
+TBC
 
 ## Configuration (of the physical arduino setup)
 
-Fritztig
+![fritzingDiagram](images/fritzingDiagram.png)
 
 ## Guidance on use
 
-- For examples of basic usage and to test the python package is working run 'experiment_setup\utilities\utilities.py'
-- For examples of usage adapted from existing bitbucket 'tactile experiment' scripts see 'experiments'
+- For examples of basic usage see the 'examples' folder
 
 ## Bug list
 
-(1) TCP
-
-Dobot magician has a Tool Center Point (TCP) bug which means that it always assumed it's tool center point values (x,y,z) are 0,0,0. For this reason the tool center point is not currently used with the dobot magician in production code. It is yet to be determined whether this functionality will be replicated in future versions of the cri_dobot wrapper. A question has been opened on this topic in the dobot magician forums.
+- Currently no bugs are listed here
 
 ## Help and updates
 
 If you need help using this code libray, please in the first instance try googling your problem to see if you can find a solution. If that doesn't help then please do feel free to initiate a pull request on github.
+
+## Contibuting
+
+Anyone is welcome to contribute - please let me know
 
 ## Thanks
 
