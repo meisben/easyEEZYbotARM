@@ -6,9 +6,9 @@ A python and arduino controller for the EEZYbotARM Mk1 & Mk2 (Includes 3-D kinem
 ## Contents
 
 - Introduction
-- Installation (python)
-- Installation (arduino)
-- Configuration (of the physical arduino setup)
+- Overview
+- Installation
+- Configuration(of the physical arduino setup)
 - Guidance on use
 - Help and updates
 
@@ -21,11 +21,7 @@ This code library provides functionality to control the EEZYbotARM (Mk1, Mk2) in
 3. Plotting of the (simulated) robot arm
 4. Plotting of the (simulated) workspace of the robot arm
 5. Communicating with a (arduino) microcontroller
-6. Using the (arduino) microcontroller to control the movement of the robot arm servo motors 
-
-The program is organised as follows
-
-[HOLD]
+6. Using the (arduino) microcontroller to control the movement of the robot arm servo motors
 
 ## Overview
 
@@ -44,10 +40,10 @@ This code library is distributed with python and arduino components. The python 
 
 This python code is distributed as a python package. A setup file is included and so dependent libraries should install with the package.
 
-To install the package on Windows, OS X or Linux, download the zip file or clone the repository. Then open a terminal window, cd to the setup directory and install the package using pip command:
+To install the package on Windows, OS X or Linux, download the zip file or clone the repository. Then open a terminal window, navigate to the setup directory using the 'cd' command and install the package using pip command:
 
 ```sh
-$pip install .
+pip install .
 ```
 
 To use with a virtual environment
@@ -56,7 +52,7 @@ To use with a virtual environment
 (2) Then run the following command from a terminal window in the local directory of dobot_tactile_toolbox setup.py: 
 
 ```sh
-$pip install -e . 
+pip install -e . 
 ```
 
 A future aim is to distribute this module using pip
@@ -81,8 +77,6 @@ This diagram is created using Fritzing. The Fritzing files can be found at '/fri
 ### Software Architecture
 ![softwareArchitecture](images/softwareArchitecture.png)
 
-## Kinematic Equations
-These will be documented in a seperate web post (to follow)
 
 ## Bug list
 
@@ -94,14 +88,21 @@ If you need help using this code libray, please in the first instance try googli
 
 ## Contributing
 
-Anyone is very welcome to contribute - please do. 
+Anyone is very welcome to contribute - please do. Below is a list of identified improvements.
 
-Some useful best practice guidelines are here: https://opensource.guide/how-to-contribute/  
+Some useful best practice guidelines are here: https://opensource.guide/how-to-contribute/
+
+### To do
+
+- Kinematic Equations: These will be documented in a seperate web post
+- Add instructions for installing servo motors and calibrating
+- Make plot (simulation) of virtual robot arm non blocking
+
 
 ## Thanks and credit
 
 -	Thanks to you for reading this and considering using this code library 
 -	A big thanks to Carlo Franciscone for open sourcing the EEZYbotARM (http://www.eezyrobots.it/eba_mk2.html)
 -   A big thanks to ArminJo for creating the fantastic arduino ServoEasing library: https://github.com/ArminJo/ServoEasing
--	Big thanks to Dr Antonia Tzemanaki on the University of West England / University of Bristol Robotics course, what an amazing teacher.
+-	Big thanks to Dr Antonia Tzemanaki at the University of Bristol / University of the West of England course, what an amazing teacher.
 -	Thanks to Professor Angela Sodemann and Professor Peter Corke for putting their wonderful courses on inverse and forward kinematics online. You can find these courses here (https://www.youtube.com/playlist?list=PLT_0lwItn0sAfi3o4xwx-fNfcnbfMrXa7) and here (https://robotacademy.net.au/)
