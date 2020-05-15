@@ -1,6 +1,8 @@
 # easyEEZYbotARM
 A python and arduino controller for the EEZYbotARM Mk1 & Mk2 (Includes 3-D kinematics) 
 
+![introPicture](images/introPicture.png)
+
 ## Contents
 
 - Introduction
@@ -74,10 +76,13 @@ This diagram is created using Fritzing. The Fritzing files can be found at '/fri
 ## Guidance on use
 
 ### Examples
-- For examples of basic usage see the 'examples' folder
+- For examples of basic usage see the '/examples' folder
 
 ### Software Architecture
 ![softwareArchitecture](images/softwareArchitecture.png)
+
+## Kinematic Equations
+These will be documented in a seperate web post (to follow)
 
 ## Bug list
 
