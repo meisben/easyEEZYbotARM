@@ -12,7 +12,7 @@ A python and arduino controller for the EEZYbotARM Mk1 & Mk2 (Includes 3-D kinem
 
 ## Introduction
 
-This code library provides function for the EEZYbotARM (Mk1, Mk2) to undertake: 
+This code library provides functionality to control the EEZYbotARM (Mk1, Mk2) in 3-D space. Specifically its functionality includes: 
 
 1. 3-D Forward kinematics
 2. 3-D Inverse kinematics
@@ -21,8 +21,18 @@ This code library provides function for the EEZYbotARM (Mk1, Mk2) to undertake:
 5. Communicating with a (arduino) microcontroller
 6. Using the (arduino) microcontroller to control the movement of the robot arm servo motors 
 
-The code library allows the user to easily convert x,y,z co-ordinates to joint angles, so that the EEZYbotARM can be controlled in 3-D space.
+The program is organised as follows
 
+[HOLD]
+
+## Overview
+
+### Forward Kinematics
+The code library allows the user to easily map joint angles to an x,y,z co-ordinates, so that we know the position of the end effector
+![forwardKinematics](images/forwardKinematics.png)
+
+### Inverse Kinematics
+The code library allows the user to easily map x,y,z co-ordinates to joint angles, so that the EEZYbotARM can be controlled in 3-D space
 ![inverseKinematics](images/inverseKinematics.png)
 
 ## Installation (python)
