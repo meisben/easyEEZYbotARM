@@ -1,5 +1,5 @@
 # easyEEZYbotARM
- A python and arduino controller (3 dimensions inverse and forward kinematics) for the EEZYbotARM (MK1,MK2,MK3) movement
+A python and arduino controller for the EEZYbotARM Mk1 & Mk2 (Includes 3-D kinematics) 
 
 ## Contents
 
@@ -27,7 +27,7 @@ The code library allows the user to easily convert x,y,z co-ordinates to joint a
 
 ## Installation (python)
 
-This code is bundelled as a python package. A setup file is included and so dependent libraries should install with the package.
+This code is distributed as a python package. A setup file is included and so dependent libraries should install with the package.
 
 To install the package on Windows, OS X or Linux, download the zip file or clone the repository. Then open a terminal window, cd to the setup directory and install the package using pip command:
 
@@ -66,7 +66,7 @@ TBC
 
 If you need help using this code libray, please in the first instance try googling your problem to see if you can find a solution. If that doesn't help then please do feel free to initiate a pull request on github.
 
-## Contibuting
+## Contributing
 
 Anyone is welcome to contribute - please let me know
 
