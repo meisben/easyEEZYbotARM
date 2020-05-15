@@ -66,13 +66,18 @@ To install the arduino code it is as simple as uploading the sketch 'arduino_ske
 The easiest way to do this is using the arduino IDE, see instructions at: https://www.arduino.cc/en/Main/Software 
 
 ## Configuration (of the physical arduino setup)
-This is the reference setup using the 'easyEZZYbotARM' repository. The buzzer is optional but can help with debugging.
+This is the reference setup using the 'easyEZZYbotARM' repository. This diagram is created using Fritzing. The Fritzing files can be found at '/fritzing_files'
 
 ![fritzingDiagram](images/fritzingDiagram.png)
+This diagram is created using Fritzing. The Fritzing files can be found at '/fritzing_files'
 
 ## Guidance on use
 
+### Examples
 - For examples of basic usage see the 'examples' folder
+
+### Software Architecture
+![softwareArchitecture](images/softwareArchitecture.png)
 
 ## Bug list
 
@@ -91,7 +96,7 @@ Some useful best practice guidelines are here: https://opensource.guide/how-to-c
 ## Thanks and credit
 
 -	Thanks to you for reading this and considering using this code library 
--	A big thanks to Carlo Franciscone for open sourcing the EEZYbotARM
+-	A big thanks to Carlo Franciscone for open sourcing the EEZYbotARM (http://www.eezyrobots.it/eba_mk2.html)
 -   A big thanks to ArminJo for creating the fantastic arduino ServoEasing library: https://github.com/ArminJo/ServoEasing
 -	Big thanks to Dr Antonia Tzemanaki on the University of West England / University of Bristol Robotics course, what an amazing teacher.
 -	Thanks to Professor Angela Sodemann and Professor Peter Corke for putting their wonderful courses on inverse and forward kinematics online. You can find these courses here (https://www.youtube.com/playlist?list=PLT_0lwItn0sAfi3o4xwx-fNfcnbfMrXa7) and here (https://robotacademy.net.au/)
