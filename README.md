@@ -35,9 +35,12 @@ The code library allows the user to easily map joint angles to an x,y,z co-ordin
 The code library allows the user to easily map x,y,z co-ordinates to joint angles, so that the EEZYbotARM can be controlled in 3-D space
 ![inverseKinematics](images/inverseKinematics.png)
 
-## Installation (python)
+## Installation 
+This code library is distributed with python and arduino components. The python code is responsible for high level kinematics calculations and simulation. The arduino code is responsbile for low level servo control.
 
-This code is distributed as a python package. A setup file is included and so dependent libraries should install with the package.
+### Installation - python
+
+This python code is distributed as a python package. A setup file is included and so dependent libraries should install with the package.
 
 To install the package on Windows, OS X or Linux, download the zip file or clone the repository. Then open a terminal window, cd to the setup directory and install the package using pip command:
 
@@ -56,11 +59,14 @@ $pip install -e .
 
 A future aim is to distribute this module using pip
 
-## Installation (arduino)
+### Installation - arduino
 
-TBC
+To install the arduino code it is as simple as uploading the sketch 'arduino_sketches\easyEEZYbotARM_Arduino_Communication' to the arduino microcontroller.
+
+The easiest way to do this is using the arduino IDE, see instructions at: https://www.arduino.cc/en/Main/Software 
 
 ## Configuration (of the physical arduino setup)
+This is the reference setup using the 'easyEZZYbotARM' repository. The buzzer is optional but can help with debugging.
 
 ![fritzingDiagram](images/fritzingDiagram.png)
 
@@ -78,12 +84,12 @@ If you need help using this code libray, please in the first instance try googli
 
 ## Contributing
 
-Anyone is welcome to contribute - please let me know
+Anyone is very welcome to contribute - please let me know. Best practice guidelines are here: https://opensource.guide/how-to-contribute/  
 
-## Thanks
+## Thanks and credit
 
--	Thanks to you for using this code library 
+-	Thanks to you for reading this and considering using this code library 
 -	A big thanks to Carlo Franciscone for open sourcing the EEZYbotARM
 -   A big thanks to ArminJo for creating the fantastic arduino ServoEasing library: https://github.com/ArminJo/ServoEasing
--	Thanks to Antonia Tzemanaki on the University of West England / University of Bristol Robotics course, what an amazing teacher.
--	Thanks to [HOLD] and [HOLD] for putting their courses on inverse and forward kinematics online
+-	Big thanks to Dr Antonia Tzemanaki on the University of West England / University of Bristol Robotics course, what an amazing teacher.
+-	Thanks to Professor Angela Sodemann and Professor Peter Corke for putting their wonderful courses on inverse and forward kinematics online. You can find these courses here (https://www.youtube.com/playlist?list=PLT_0lwItn0sAfi3o4xwx-fNfcnbfMrXa7) and here (https://robotacademy.net.au/)
