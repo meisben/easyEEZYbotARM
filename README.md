@@ -33,7 +33,7 @@ The code library allows the user to easily map joint angles to an x,y,z co-ordin
 The code library allows the user to easily map x,y,z co-ordinates to joint angles, so that the EEZYbotARM can be controlled in 3-D space
 ![inverseKinematics](images/inverseKinematics.png)
 
-### Simulation and plotting the robot arm workspace
+### Simulation the robot arm, and plotting the robot arm workspace
 The code library allows the user to easily plot a (simulated) robot arm. It is easy to calculate and plot the robot arm workspace. As well as checking whether a cartesian (x,y,z) point is within or outside the workspace.
 ![plottingAndWorkspace](images/plottingAndWorkspace.png)
 
@@ -44,7 +44,11 @@ This code library is distributed with python and arduino components. The python 
 
 This python code is distributed as a python package. A setup file is included and so dependent libraries should install with the package.
 
-To install the package on Windows, OS X or Linux, download the zip file or clone the repository. Then open a terminal window, navigate to the setup directory using the 'cd' command and install the package using pip command:
+To install the package on Windows, OS X or Linux:
+
+(1) Download the easyEZZYbotARM zip file or clone the github repository
+(2) Then open a terminal window and navigate to the setup.py directory using the 'cd' command
+(3) Install the package using the pip command:
 
 ```sh
 pip install .
@@ -52,8 +56,10 @@ pip install .
 
 To use with a virtual environment
 
-(1) create a virtual environment (e.g. using conda or venv). 
-(2) Then run the following command from a terminal window in the local directory of dobot_tactile_toolbox setup.py: 
+(1) Download the easyEZZYbotARM zip file or clone the github repository
+(2) Create a virtual environment (e.g. using conda or venv), then activate it in a terminal window
+(3) Then inside this terminal window, navigate to the setup.py directory using the 'cd' command 
+(4) Install the package using the pip command:
 
 ```sh
 pip install -e . 
@@ -68,10 +74,12 @@ To install the arduino code it is as simple as uploading the sketch 'arduino_ske
 The easiest way to do this is using the arduino IDE, see instructions at: https://www.arduino.cc/en/Main/Software 
 
 ## Configuration (of the physical arduino setup)
-This is the reference setup using the 'easyEZZYbotARM' repository. This diagram is created using Fritzing. The Fritzing files can be found at '/fritzing_files'
+This is the reference setup using the 'easyEZZYbotARM' repository. The servo motors represent the servo motors mounted on the EEZYbotARM.
 
 ![fritzingDiagram](images/fritzingDiagram.png)
 This diagram is created using Fritzing. The Fritzing files can be found at '/fritzing_files'
+
+Instructions for building a EEZYbotARM can be found here: http://www.eezyrobots.it/eba_mk2.html
 
 ## Guidance on use
 
