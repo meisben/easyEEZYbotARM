@@ -76,12 +76,13 @@ The easiest way to do this is using the arduino IDE, see instructions at: https:
 The arduino software uses ArminJo's ServoEasing library so that the motions of the servo motors are smooth and not sudden 'jolts' 
 
 ## Configuration (of the physical arduino setup)
-This is the reference setup using the 'easyEZZYbotARM' repository. The servo motors represent the servo motors mounted on the EEZYbotARM. The PCA9685 is a widely available low cost board designed by Adafruit.
+Instructions for building a EEZYbotARM can be found here: http://www.eezyrobots.it/eba_mk2.html
+Chris Riley has a great step by step video of the EEZYbotARM mk2 on youtube: https://www.youtube.com/watch?v=R2MI-tpXyS4
+
+This is the reference setup using the 'easyEZZYbotARM' repository. The servo motors represent the servo motors mounted on the EEZYbotARM. The PCA9685 is a widely available low cost board designed by Adafruit. The battery pack could be replaced by any DC power source < 6 volts.
 
 ![fritzingDiagram](images/fritzingDiagram.png)
 This diagram is created using Fritzing. The Fritzing files can be found at '/fritzing_files'
-
-Instructions for building a EEZYbotARM can be found here: http://www.eezyrobots.it/eba_mk2.html
 
 ## Guidance on use
 
