@@ -73,8 +73,10 @@ To install the arduino code it is as simple as uploading the sketch 'arduino_ske
 
 The easiest way to do this is using the arduino IDE, see instructions at: https://www.arduino.cc/en/Main/Software 
 
+The arduino software uses ArminJo's ServoEasing library so that the motions of the servo motors are smooth and not sudden 'jolts' 
+
 ## Configuration (of the physical arduino setup)
-This is the reference setup using the 'easyEZZYbotARM' repository. The servo motors represent the servo motors mounted on the EEZYbotARM.
+This is the reference setup using the 'easyEZZYbotARM' repository. The servo motors represent the servo motors mounted on the EEZYbotARM. The PCA9685 is a widely available low cost board designed by Adafruit.
 
 ![fritzingDiagram](images/fritzingDiagram.png)
 This diagram is created using Fritzing. The Fritzing files can be found at '/fritzing_files'
@@ -104,13 +106,18 @@ Anyone is very welcome to contribute - please do. Below is a list of identified 
 
 Some useful best practice guidelines are here: https://opensource.guide/how-to-contribute/
 
-### To do
+### To do (improvements)
 
 - Kinematic Equations: These will be documented in a seperate web post
 - Add example for plotting workspace
 - Add instructions for installing servo motors and calibrating
 - Make plot (simulation) of virtual robot arm non blocking
+- Tidy up code
+- Seperate plotting function and D-H functions for calculating joint frame and link positions
 
+## Limitations
+
+Because the servo motors are 'hobby motors' without position feedback to the python library it's not possible to create 'straight line' type trajectories using the EEZYbotARM. If you are looking for this functionality (outside of a hobby project) I suggest using a robot arm which already implements this out of the box. For example the dobot magician arm or the niryo one.
 
 ## Thanks and credit
 
