@@ -33,6 +33,10 @@ The code library allows the user to easily map joint angles to an x,y,z co-ordin
 The code library allows the user to easily map x,y,z co-ordinates to joint angles, so that the EEZYbotARM can be controlled in 3-D space
 ![inverseKinematics](images/inverseKinematics.png)
 
+### Simulation and plotting the robot arm workspace
+The code library allows the user to easily plot a (simulated) robot arm. It is easy to calculate and plot the robot arm workspace. As well as checking whether a cartesian (x,y,z) point is within or outside the workspace.
+![plottingAndWorkspace](images/plottingAndWorkspace.png)
+
 ## Installation 
 This code library is distributed with python and arduino components. The python code is responsible for high level kinematics calculations and simulation. The arduino code is responsbile for low level servo control.
 
@@ -95,6 +99,7 @@ Some useful best practice guidelines are here: https://opensource.guide/how-to-c
 ### To do
 
 - Kinematic Equations: These will be documented in a seperate web post
+- Add example for plotting workspace
 - Add instructions for installing servo motors and calibrating
 - Make plot (simulation) of virtual robot arm non blocking
 
