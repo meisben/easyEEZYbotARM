@@ -1,5 +1,7 @@
 # easyEEZYbotARM
-A python and arduino controller for the EEZYbotARM Mk1 & Mk2 (Includes 3-D kinematics) 
+A python and arduino controller for the EEZYbotARM Mk1 & Mk2 (Includes 3-D kinematics).
+
+EEZYbotARMs are a range of open source 3d-printable robot arms designed by Carlo Franciscone. 
 
 ![introPicture](images/introPicture.png)
 
