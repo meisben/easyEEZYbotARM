@@ -118,7 +118,8 @@ Some useful best practice guidelines are here: https://opensource.guide/how-to-c
 
 ## Limitations
 
-Because the servo motors are 'hobby motors' without position feedback to the python library it's not possible to create 'straight line' type trajectories using the EEZYbotARM. If you are looking for this functionality (outside of a hobby project) I suggest using a robot arm which already implements this out of the box. For example the dobot magician arm or the niryo one.
+- Because the servo motors are 'hobby motors' without position feedback to the python library it's not possible to create 'straight line' type trajectories using the EEZYbotARM. If you are looking for this functionality (outside of a hobby project) I suggest using a robot arm which already implements this out of the box. For example the niryo one arm or the dobot magician arm.
+- Because the servo motors are 'hobby motors' they may heat up after prolonged use and loose acurracy. This depends on what activity they are undertaking, but is likely to ocurr when lifting any kind of load that isn't 'very light'.
 
 ## Thanks and credit
 
