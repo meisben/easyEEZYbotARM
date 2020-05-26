@@ -49,22 +49,12 @@ This python code is distributed as a python package. A setup file is included an
 To install the package on Windows, OS X or Linux:
 
 1. Download the easyEZZYbotARM zip file or clone the github repository
-2. Then open a terminal window and navigate to the setup.py directory using the 'cd' command
-3. Install the package using the pip command:
-
-```sh
-pip install .
-```
-
-To use with a virtual environment
-
-1. Download the easyEZZYbotARM zip file or clone the github repository
-2. Create a virtual environment (e.g. using conda or venv), then activate it in a terminal window
-3. Then inside this terminal window, navigate to the setup.py directory using the 'cd' command 
+2. [Optional] Create a virtual environment (e.g. using conda or venv), then activate it in a terminal window
+3. Then open a terminal window and navigate to the setup.py directory using the 'cd' command
 4. Install the package using the pip command:
 
 ```sh
-pip install -e . 
+pip install .
 ```
 
 A future aim is to distribute this module using pip
