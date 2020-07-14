@@ -54,8 +54,10 @@ To install the package on Windows, OS X or Linux:
 4. Install the package using the pip command:
 
 ```sh
-pip install .
+pip install -e .
 ```
+
+This will create an editable install of the easyEZZYbotARM library
 
 A future aim is to distribute this module using pip
 
