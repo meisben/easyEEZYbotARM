@@ -101,6 +101,9 @@ void setup() {
   pinMode(LED_BUILTIN, OUTPUT); // setup built in LED for flashing
   pinMode(BUZZER_PIN, OUTPUT); // Set buzzer pin as an output
 
+  //Play tone so we can tell if the board accidently reset
+  playTone();
+
   //Begin serial communications
   Serial.begin(9600);
 

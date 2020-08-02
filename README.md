@@ -125,5 +125,12 @@ Some useful best practice guidelines are here: https://opensource.guide/how-to-c
 -	Thanks to you for reading this and considering using this code library 
 -	A big thanks to Carlo Franciscone for open sourcing the EEZYbotARM (http://www.eezyrobots.it/eba_mk2.html)
 -   A big thanks to ArminJo for creating the fantastic arduino ServoEasing library: https://github.com/ArminJo/ServoEasing
--	Big thanks to Dr Antonia Tzemanaki at the University of Bristol / University of the West of England course, what an amazing teacher.
+-	A big thanks to Dr Antonia Tzemanaki at the University of Bristol / University of the West of England robotics course, what an amazing teacher.
 -	Thanks to Professor Angela Sodemann and Professor Peter Corke for putting their wonderful courses on inverse and forward kinematics online. You can find these courses here (https://www.youtube.com/playlist?list=PLT_0lwItn0sAfi3o4xwx-fNfcnbfMrXa7) and here (https://robotacademy.net.au/)
+
+## Release history
+
+### v0.1-alpha
+
+Initial library version
+

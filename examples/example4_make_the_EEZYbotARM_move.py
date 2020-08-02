@@ -15,7 +15,7 @@
 from easyEEZYbotARM.serial_communication import arduinoController
 
 # Insert your Arduino serial port here
-myArduino = arduinoController(port="COM19")
+myArduino = arduinoController(port="COM3")
 
 # Create some test data.
 # The angles used for this test data are 'raw' servo angles (i.e. not calibrated)

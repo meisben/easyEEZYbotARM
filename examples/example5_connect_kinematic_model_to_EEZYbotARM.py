@@ -11,9 +11,9 @@
 # will be published online at a later date.
 
 # The reference positions for the three servos are as follows:
-# - EzzyBot base (q1) : 90 degree servo position is facing directly forwards
-# - Main arm (q2): 90 degree servo position is with main arm perpendicular (at 90 degrees to) base
-# - Horarm (q3): 90 degree servo poisition is with horarm servo link at 45 degrees to base
+# - EzzyBot base (q1 -> 0 degrees) : 90 degree servo position is facing directly forwards
+# - Main arm (q2 -> 90 degrees): 90 degree servo position is with main arm perpendicular (at 90 degrees to) base
+# - Horarm (q3 -> -130): 90 degree servo poisition is with horarm servo link at 40 degrees to base
 
 # The servos are plugged into the following pin positions on the PCA9685 board:
 # Servo_q1 -> EzzyBot base (q1) -> PCA9685 pin 1
@@ -26,12 +26,12 @@ from easyEEZYbotARM.kinematic_model import EEZYbotARM_Mk2
 from easyEEZYbotARM.serial_communication import arduinoController
 
 # Insert your Arduino serial port here to initialise the arduino controller
-myArduino = arduinoController(port="COM19")
+myArduino = arduinoController(port="COM3")
 myArduino.openSerialPort()
 
-# Initialise kinematic model with initial joint angles
+# Initialise kinematic model with initial joint angles (home position)
 myVirtualRobotArm = EEZYbotARM_Mk2(
-    initial_q1=0, initial_q2=70, initial_q3=-100)
+    initial_q1=0, initial_q2=90, initial_q3=-130)
 # Plot it
 myVirtualRobotArm.plot()
 
