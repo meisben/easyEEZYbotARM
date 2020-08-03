@@ -93,7 +93,7 @@ This diagram is created using Fritzing. The Fritzing files can be found at '/fri
 
 For us to be able to control the robot arm, it's really important that the servo motors are installed in **known** 'reference positions' and that we understand how they behave. This is a two step process !
 
-## Servo installation position procedure
+### Servo installation position procedure
 
 The servo motors (for angles q1, q2, q3) should be installed following the instructions below.
 
@@ -105,7 +105,7 @@ The aim of this installation procedure is to install the servo motors in a known
 
 ![servo_installation_position](images/servo_installation_position.png)
 
-### Improving the accuracy of the robot arm / troubleshooting positions
+### Improving the accuracy of the robot arm (or troubleshooting positional accuracy)
 
 **Please note:** *what is described in this sub-section is only currently implemented for the q1 servo motor in the easyEZZYbotARM library based on experimental values for a test robot. This is because it is strictly necessary for the q1 (base) servo motor. You can edit this for your particular motors (q2,q3) in the `map_kinematicsToServoAngles` function in the easyEEZYbotARM python library. Doing so will improve the positional accuracy of the robot arm*
 
