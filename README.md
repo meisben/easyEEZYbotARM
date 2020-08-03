@@ -112,7 +112,7 @@ A reasonable way to do this is to command the servo motor to positions in increm
 
 ![servo_one_calibration_example](images/servo_one_calibration_example.png)
 
-You can see that in the easyEEZYbotARM libary, this mapping between the (demanded) input and an (actual) output is implemented (for the q1 base servo motor) as follows:
+A [linear relationship](https://www.mathsisfun.com/equation_of_line.html) can be estimated from this data (using excel line of best fit). The equation for this is displayed on the chart. You can see that this exact equation is implemented in the easyEEZYbotARM libary, this mapping between the (demanded) input and an (actual) output is implemented (for the q1 base servo motor) as follows:
 
 ```python
 # Calculate for q1
