@@ -13,7 +13,7 @@
 # The reference positions for the three servos are as follows:
 # - EzzyBot base (q1 -> 0 degrees) : 90 degree servo position is facing directly forwards
 # - Main arm (q2 -> 90 degrees): 90 degree servo position is with main arm perpendicular (at 90 degrees to) base
-# - Horarm (q3 -> -130): 90 degree servo poisition is with horarm servo link at 40 degrees to base
+# - Horarm (q3 -> -135): 90 degree servo poisition is with horarm servo link at 45 degrees to base
 
 # The servos are plugged into the following pin positions on the PCA9685 board:
 # Servo_q1 -> EzzyBot base (q1) -> PCA9685 pin 1

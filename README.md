@@ -170,6 +170,10 @@ Some useful best practice guidelines are here: https://opensource.guide/how-to-c
 
 ## Release history
 
+### v0.2-alpha
+
+Added information on calibration and installation positions for the servo motors
+
 ### v0.1-alpha
 
 Initial library version
