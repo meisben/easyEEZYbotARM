@@ -82,6 +82,46 @@ This diagram is created using Fritzing. The Fritzing files can be found at '/fri
 - Chris Riley has a great step by step video of the EEZYbotARM mk2 on youtube: https://www.youtube.com/watch?v=R2MI-tpXyS4
 - If you are looking for the googly eyes extension you can find it here!: https://www.thingiverse.com/thing:4370985
 
+**Important:** Please read the next *Calibrating the EEZYbotARM* section before you install servo motors into the robot arm.
+
+## Calibrating the EEZYbotARM
+
+For us to be able to control the robot arm, it's really important that the servo motors are installed in **known** 'reference positions' and that we understand how they behave. This is a two step process !
+
+## Servo installation position procedure
+
+The servo motors (for angles q1, q2, q3) should be installed following the instructions below.
+
+(1) Command the servo motor angles to 90 degrees using an Arduino script which sends PWM (Pulse width modulation) signals to the servo. You can use the [ServoEasing](https://github.com/ArminJo/ServoEasing) library for this purpose.
+(2) Position the EEZYbotARM links as shown in the diagram below
+(3) Attach the servo arms (the bits of plastic that attach to the motor) and install the motors so that they remain in the 90 degree position, when the EEZYbotARM links are in the position below.
+
+The aim of this installation procedure is to install the servo motors in a known reference position.
+
+![servo_installation_position](images/servo_installation_position.png)
+
+### Improving the accuracy of the robot arm / troubleshooting positions
+
+**Please note:** *what is described in this sub-section is only currently implemented for the q1 servo motor in the easyEZZYbotARM library based on experimental values for a test robot. This is because it is strictly necessary for the q1 (base) servo motor. You can edit this for your particular motors (q2,q3) in the `map_kinematicsToServoAngles` function in the easyEEZYbotARM python library. Doing so will improve the positional accuracy of the robot arm*
+
+Because the robot arm is using *'hobby servo motors'*, they don't always behave like we expect them to! For example, say we command a hobby servo (using pulse width modulation) to travel to an angle of 120 degrees, and then move to an angle of 70 degrees. If we measure these angles we are likely to find they are quite a way out! This makes a big difference to how the robot arm moves, so we need to correct any errors before we install the servo motors. An example of a setup to do this is shown in the video below
+
+[![Servo calibration example (arduino)](https://img.youtube.com/vi/GVBDZIZc2mw/0.jpg)](https://www.youtube.com/watch?v=GVBDZIZc2mw)
+
+A reasonable way to do this is to command the servo motor to positions in increments of 10 degrees, and to measure the actual position of the motor. This can be recorded in a spreadsheet, so that we can map between a (demanded) input and an (actual) output using a linear function. An example of this (for the robot arm base servo motor) is given in this [excel sheet](resources/example_servo_calibration.xlsx). The graph produced from this is shown here.
+
+![servo_one_calibration_example](images/servo_one_calibration_example.png)
+
+You can see that in the easyEEZYbotARM libary, this mapping between the (demanded) input and an (actual) output is implemented (for the q1 base servo motor) as follows:
+
+```python
+# Calculate for q1
+servoAngle_q1 = ((-2.0497)*q1) + 91.726  # from experimentation !
+servoAngle_q1 = round(servoAngle_q1, 2)
+```
+
+I haven't experimented with lots of hobby servo motors, but I suspect that they are all a bit different in their performance between demanded value, and actual output. If your robot arm isn't quite in the right position (but almost is), then this could be something to optimise!
+
 ## Guidance on use
 
 ### Examples
@@ -123,10 +163,10 @@ Some useful best practice guidelines are here: https://opensource.guide/how-to-c
 ## Thanks and credit
 
 -	Thanks to you for reading this and considering using this code library 
--	A big thanks to Carlo Franciscone for open sourcing the EEZYbotARM (http://www.eezyrobots.it/eba_mk2.html)
--   A big thanks to ArminJo for creating the fantastic arduino ServoEasing library: https://github.com/ArminJo/ServoEasing
+-	A big thanks to Carlo Franciscone for open sourcing the [EEZYbotARM](http://www.eezyrobots.it/eba_mk2.html)
+-   A big thanks to ArminJo for creating the fantastic arduino [ServoEasing library](https://github.com/ArminJo/ServoEasing)
 -	A big thanks to Dr Antonia Tzemanaki at the University of Bristol / University of the West of England robotics course, what an amazing teacher.
--	Thanks to Professor Angela Sodemann and Professor Peter Corke for putting their wonderful courses on inverse and forward kinematics online. You can find these courses here (https://www.youtube.com/playlist?list=PLT_0lwItn0sAfi3o4xwx-fNfcnbfMrXa7) and here (https://robotacademy.net.au/)
+-	Thanks to Professor Angela Sodemann and Professor Peter Corke for putting their wonderful courses on inverse and forward kinematics online. You can find these courses [here](https://www.youtube.com/playlist?list=PLT_0lwItn0sAfi3o4xwx-fNfcnbfMrXa7) and [here](https://robotacademy.net.au/)
 
 ## Release history
 
