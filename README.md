@@ -1,4 +1,9 @@
 # easyEEZYbotARM
+
+### [Version 0.2-alpha](https://github.com/meisben/easyEEZYbotARM/releases)
+![GitHub](https://img.shields.io/github/license/meisben/easyEEZYbotARM?style=flat-square)
+[![Hit Counter](https://hitcounter.pythonanywhere.com/count/tag.svg?url=https://github.com/meisben/easyEEZYbotARM)](https://github.com/brentvollebregt/hit-counter)
+
 A python and arduino controller for the EEZYbotARM Mk1 & Mk2 (Includes 3-D kinematics).
 
 EEZYbotARMs are a range of open source 3d-printable robot arms designed by Carlo Franciscone. 
@@ -172,7 +177,7 @@ Some useful best practice guidelines are here: https://opensource.guide/how-to-c
 
 ### v0.2-alpha
 
-Added information on calibration and installation positions for the servo motors
+Added information and resources on calibration and installation positions for the servo motors
 
 ### v0.1-alpha
 
