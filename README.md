@@ -97,9 +97,9 @@ For us to be able to control the robot arm, it's really important that the servo
 
 The servo motors (for angles q1, q2, q3) should be installed following the instructions below.
 
-(1) Command the servo motor angles to 90 degrees using an Arduino script which sends PWM (Pulse width modulation) signals to the servo. You can use the [ServoEasing](https://github.com/ArminJo/ServoEasing) library for this purpose.
-(2) Position the EEZYbotARM links as shown in the diagram below
-(3) Attach the servo arms (the bits of plastic that attach to the motor) and install the motors so that they remain in the 90 degree position, when the EEZYbotARM links are in the position below.
+1. Command the servo motor angles to 90 degrees using an Arduino script which sends PWM (Pulse width modulation) signals to the servo. You can use the [ServoEasing](https://github.com/ArminJo/ServoEasing) library for this purpose.
+2. Position the EEZYbotARM links as shown in the diagram below
+3. Attach the servo arms (the bits of plastic that attach to the motor) and install the motors so that they remain in the 90 degree position, when the EEZYbotARM links are in the position below.
 
 The aim of this installation procedure is to install the servo motors in a known reference position.
 
