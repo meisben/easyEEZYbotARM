@@ -49,7 +49,7 @@ This code library is distributed with python and arduino components. The python 
 
 ### Installation (python)
 
-This python code is distributed as a python package. A setup file is included and so dependent libraries should install with the package.
+This python code is distributed as a python package. A setup file is included and so dependent libraries should install with the package. :)
 
 To install the package on Windows, OS X or Linux:
 
