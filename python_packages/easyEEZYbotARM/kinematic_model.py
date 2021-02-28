@@ -9,6 +9,7 @@
 # v3.3 -> troubleshooting why the convex hull and workspace isn't quite right! [19 Nov 19]
 # v3.4 -> checking demo functionality
 # v3.5 -> moving to github
+# v3.6 -> adding MK1 version of the EEZYbotARM as a new sub-class
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 
@@ -410,6 +411,10 @@ class EEZYbotARM:
         L2 = self.L2
         L3 = self.L3
         L4 = self.L4
+        # Lengths for the links which attach to the hoarm
+        L2A = self.L2A
+        LAB = self.LAB
+        LB3 = self.LB3
 
         # DH table
         DH = np.array([[0,  0,     L1, q1],
@@ -469,9 +474,6 @@ class EEZYbotARM:
         TEE = T05.dot(T5EE).dot(TZRot)  # translate and rotate !
 
         # --- Create the frames for the links which attach to the hoarm
-        L2A = 60
-        LAB = 140
-        LB3 = 60
         q3_a = pi - (- q3)  # adjusted q3 value
 
         # --- --- For Frame A
@@ -537,7 +539,7 @@ class EEZYbotARM:
         ax = fig.add_subplot(111, projection='3d')
 
         # add labels to the plot
-        ax.set(title="3-d simulation of EEZYbotARM Mk2", xlabel="x (mm)",
+        ax.set(title="3-d simulation of EEZYbotARM", xlabel="x (mm)",
                ylabel="y (mm)", zlabel="z (mm)")
 
         # set axis equal
@@ -638,6 +640,10 @@ class EEZYbotARM:
         L2 = self.L2
         L3 = self.L3
         L4 = self.L4
+        # Lengths for the links which attach to the hoarm
+        L2A = self.L2A
+        LAB = self.LAB
+        LB3 = self.LB3
 
         # DH table
         DH = np.array([[0,  0,     L1, q1],
@@ -697,9 +703,6 @@ class EEZYbotARM:
         TEE = T05.dot(T5EE).dot(TZRot)  # translate and rotate !
 
         # --- Create the frames for the links which attach to the hoarm
-        L2A = 60
-        LAB = 140
-        LB3 = 60
         q3_a = pi - (- q3)  # adjusted q3 value
 
         # --- --- For Frame A
@@ -1091,6 +1094,11 @@ class EEZYbotARM_Mk2(EEZYbotARM):
     L3 = 147
     L4 = 87
 
+    # --- Lengths of links which attach to the hoarm
+    L2A = 60
+    LAB = 140
+    LB3 = 60
+
     # Joint limits
     q1_min = -30  # degrees
     q1_max = 30
@@ -1102,6 +1110,111 @@ class EEZYbotARM_Mk2(EEZYbotARM):
         """
         Calculate q3 angle limits for the EzzyBot Arm given a value for the angle q2 in degrees
         These limits have been determined experimentally for the EEzybotMk2
+
+        If no q2 value is given then the current value of q2 is used 
+
+        --Optional kwargs Parameters--
+        @q2 -> the value of the angle q2 (in degrees)
+
+        --Returns--
+        q3_min, q3_max -> the min and max limits for the angle q3 (in degrees)
+
+        """
+        # Use **kwarg if provided, otherwise use current q2 value
+        q2 = kwargs.get('q2', self.q2)
+
+        # calculate q3 min limits in degrees
+        q3_min = (-0.6755 * q2) - 70.768
+        q3_max = (-0.7165 * q2) - 13.144
+
+        return q3_min, q3_max
+
+    def map_kinematicsToServoAngles(self, **kwargs):
+        """
+        --Description--
+        Take the three angles for the EzzyBot Arm defined in kinematics.
+        Use these to calculate the required physical servo position with respect to the reference position.
+        If three angles are not provided as **kwargs then the current values for the arm are used
+
+        The reference positions for the three servos are as follows:
+
+        EzzyBot base (q1) : 90 degree servo position is facing directly forwards
+        Main arm (q2): 90 degree servo position is with main arm perpendicular (at 90 degrees to) base
+        Horarm (q3): 90 degree servo poisition is with horarm servo link at 45 degrees to base
+
+        The function will be updated to raise an error message when any of the returned angles are outside of the servo limits.
+
+        --Optional **kwargs Parameters--
+        @q1 -> the value of the angle q1 (in degrees) as used in the kinematics model
+        @q2 -> the value of the angle q2 (in degrees) as used in the kinematics model
+        @q3 -> the value of the angle q3 (in degrees) as used in the kinematics model
+
+        --Returns--
+        servoAngle_q1, servoAngle_q2, servoAngle_q3 -> values in degrees for output to the physical servos
+
+        """
+
+        # Use **kwargs if provided, otherwise use current values
+        q1 = kwargs.get('q1', self.q1)
+        q2 = kwargs.get('q2', self.q2)
+        q3 = kwargs.get('q3', self.q3)
+
+        # Check none of the angles are outside of joint limits! So that servos cannot get damaged
+        self.checkErrorJointLimits(q1=q1, q2=q2, q3=q3)
+
+        # Calculate for q1
+        servoAngle_q1 = ((-2.0497)*q1) + 91.726  # from experimentation !
+        servoAngle_q1 = round(servoAngle_q1, 2)
+
+        # Calculate for q2
+        servoAngle_q2 = 180 - q2  # approximate adjusted q2 value
+        servoAngle_q2 = round(servoAngle_q2, 2)
+
+        # Calculate for q3
+        q3_a = 180 - (- q3)  # approximate adjusted q3 value
+        servoAngle_q3 = q2 - 45 + q3_a
+        servoAngle_q3 = round(servoAngle_q3, 2)
+
+        return servoAngle_q1, servoAngle_q2, servoAngle_q3
+
+
+class EEZYbotARM_Mk1(EEZYbotARM):
+    """
+    --Description--
+    This is a child class for the EEzybot Robotic arm MK1 (inherits from EEZYbotARM() class) 
+
+    **Please note that you must always instantiate on a child class (either EEZYbotARMMk2() or EEZYbotARMMk1()) 
+    rather than instansiating the parent 'EEZYbotARM' class**
+
+    --Methods--
+    Description of available methods in this class:    
+        - q3CalcLimits --> Calculate the physical limits for joint 3 (because these depend on the angle of joint 2)
+        - map_kinematicsToServoAngles --> Map angles defined in kinematics to physical servo angles on the robot
+    """
+
+    # Class attribute
+    # DH parameters (Proximal Convention)
+    L1 = 61  # mm
+    L2 = 80
+    L3 = 80
+    L4 = 57
+
+    # --- Lengths of links which attach to the hoarm
+    L2A = 35
+    LAB = 80
+    LB3 = 35
+
+    # Joint limits
+    q1_min = -30  # degrees
+    q1_max = 30
+    q2_min = 39
+    q2_max = 120
+    # q3_min, q3_max are given by q3CalcLimits() function
+
+    def q3CalcLimits(self, **kwargs):
+        """
+        Calculate q3 angle limits for the EzzyBot Arm given a value for the angle q2 in degrees
+        These limits have been determined experimentally for the EEzybotMk1
 
         If no q2 value is given then the current value of q2 is used 
 
