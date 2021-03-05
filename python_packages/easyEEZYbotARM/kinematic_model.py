@@ -10,6 +10,7 @@
 # v3.4 -> checking demo functionality
 # v3.5 -> moving to github
 # v3.6 -> adding MK1 version of the EEZYbotARM as a new sub-class
+# v3.7 -> squishing bug for Mk1 inverse kinematics ----> Solved :) !
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 
@@ -308,10 +309,10 @@ class EEZYbotARM:
 
         """
         # DH parameters (Proximal Convention)
-        L1 = 92
-        L2 = 135
-        L3 = 147
-        L4 = 87
+        L1 = self.L1
+        L2 = self.L2
+        L3 = self.L3
+        L4 = self.L4
 
         # Find the value for the fist angle
         q1 = atan2(y_EE, x_EE)
