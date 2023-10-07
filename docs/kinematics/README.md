@@ -14,13 +14,13 @@ For example:
 * [Dobot MG400](https://www.dobot-robots.com/products/education/magician.html)
 * [MyPalletizer 260 M5Stack](https://shop.elephantrobotics.com/en-gb/products/mypalletizer)
 
-## Forward Kinematics
+## Forward kinematic calculations
 
 The [forward kinematic calculations](Forward_kinematics_EEZYbotARM.pdf) are implemented in the kinematic_model.py python module, in the forwardKinematics function.
 
 ![forwardKinematics](../../images/forwardKinematics.png)
 
-## Inverse Kinematics
+## Inverse kinematic calculations
 
 The [inverse kinematic calculations](Inverse_kinematics_EEZYbotARM.pdf) are implemented in the kinematic_model.py python module, in the inverseKinematics function.
 
