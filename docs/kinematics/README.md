@@ -10,14 +10,16 @@ The method of these kinematic calculations should generalise to other similar ge
 
 ## Forward Kinematics
 
-![forwardKinematics](../../images/forwardKinematics.png)
+The [forward kinematic calculations](Forward_kinematics_EEZYbotARM.pdf) are implemented in the kinematic_model.py python module, in the forwardKinematics function.
 
-The [forward kinematics](Forward_kinematics_EEZYbotARM.pdf) calculations are implemented in the kinematic_model.py python module, in the forwardKinematics function.
+![forwardKinematics](../../images/forwardKinematics.png)
 
 ## Inverse Kinematics
 
+The [inverse kinematic calculations](Inverse_kinematics_EEZYbotARM.pdf) are implemented in the kinematic_model.py python module, in the inverseKinematics function.
+
 ![inverseKinematics](../../images/inverseKinematics.png)
 
-The [inverse kinematics](Inverse_kinematics_EEZYbotARM.pdf) calculations are implemented in the kinematic_model.py python module, in the inverseKinematics function.
+
 
 
