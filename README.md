@@ -10,7 +10,7 @@
 
 A python and arduino controller for the EEZYbotARM Mk1 & Mk2 (Includes 3-D kinematics).
 
-EEZYbotARMs are a range of open source 3d-printable robot arms designed by Carlo Franciscone. 
+EEZYbotARMs are a range of four-axis, open source 3d-printable robot arms designed by Carlo Franciscone. 
 
 ![introPicture](images/introPicture.png)
 
@@ -18,6 +18,7 @@ EEZYbotARMs are a range of open source 3d-printable robot arms designed by Carlo
 
 - Introduction
 - Overview
+  - Kinematic calculations
 - Installation
 - Configuration(of the physical arduino setup)
 - Guidance on use
@@ -39,13 +40,13 @@ This code library provides functionality to control the EEZYbotARM (Mk1, Mk2) in
 ### Forward Kinematics
 The code library allows the user to easily map joint angles to an x,y,z co-ordinates, so that we know the position of the end effector
 
-The mathematical calculations for the forward kinematics can be found [here](docs/kinematics)
+The mathematical calculations for the forward kinematics can be found [here](docs/kinematics). The method is applicable to other four axis robot arms.
 ![forwardKinematics](images/forwardKinematics.png)
 
 ### Inverse Kinematics
 The code library allows the user to easily map x,y,z co-ordinates to joint angles, so that the EEZYbotARM can be controlled in 3-D space
 
-The mathematical calculations for the inverse kinematics can be found [here](docs/kinematics)
+The mathematical calculations for the inverse kinematics can be found [here](docs/kinematics). The method is applicable to other four axis robot arms.
 ![inverseKinematics](images/inverseKinematics.png)
 
 ### Simulation the robot arm, and plotting the robot arm workspace
