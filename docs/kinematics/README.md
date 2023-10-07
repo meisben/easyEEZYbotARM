@@ -16,13 +16,13 @@ For example:
 
 ## Forward kinematic calculations
 
-The [forward kinematic calculations](Forward_kinematics_EEZYbotARM.pdf) are implemented in the kinematic_model.py python module, in the forwardKinematics function.
+The [forward kinematic calculations](Forward_kinematics_EEZYbotARM.pdf) are implemented in the `kinematic_model.py` python module, in the `forwardKinematics` function.
 
 ![forwardKinematics](../../images/forwardKinematics.png)
 
 ## Inverse kinematic calculations
 
-The [inverse kinematic calculations](Inverse_kinematics_EEZYbotARM.pdf) are implemented in the kinematic_model.py python module, in the inverseKinematics function.
+The [inverse kinematic calculations](Inverse_kinematics_EEZYbotARM.pdf) are implemented in the `kinematic_model.py` python module, in the `inverseKinematics` function.
 
 ![inverseKinematics](../../images/inverseKinematics.png)
 
