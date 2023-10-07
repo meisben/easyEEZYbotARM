@@ -184,6 +184,13 @@ Some useful best practice guidelines are here: https://opensource.guide/how-to-c
 
 ## Release history
 
+### v0.3-alpha
+
+#### Documentation Updates
+* Added details of [kinematic calculations](https://github.com/meisben/easyEEZYbotARM/tree/master/docs/kinematics)
+#### Code updates
+* [Update to reflect newer ServoEasing library include call (.hpp)](https://github.com/meisben/easyEEZYbotARM/commit/74fdef2b7e2b1e409cfac3729df992d284b2d6d2)
+
 ### v0.2-alpha
 
 Added information and resources on calibration and installation positions for the servo motors
