@@ -6,7 +6,13 @@ Kinematics is the mapping of joint angles to the end effector position. It allow
 
 ## Generalisation
 
-The method of these kinematic calculations should generalise to other similar geometry robot arms. For example the [Dobot Magician](https://www.dobot-robots.com/products/education/magician.html)
+The method of these kinematic calculations should generalise to other similar geometry (4 axis) robot arms. 
+
+For example:
+
+* [Dobot Magician](https://www.dobot-robots.com/products/education/magician.html)
+* [Dobot MG400](https://www.dobot-robots.com/products/education/magician.html)
+* [MyPalletizer 260 M5Stack](https://shop.elephantrobotics.com/en-gb/products/mypalletizer)
 
 ## Forward Kinematics
 
