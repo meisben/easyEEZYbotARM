@@ -35,19 +35,19 @@
 // include these libraries for using the servo add on board. Taken from servo example code
 #include <Arduino.h>
 // include this library for servo easing functionality
-#include "ServoEasing.h"
+#include "ServoEasing.hpp"
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
   Definitions                                                                    *
 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #define VERSION "3.1"
-#define BUZZER_PIN 5 //buzzer to featherwing pin 5, 470 ohm resistor
+#define BUZZER_PIN 5 // buzzer to featherwing pin 5, 470 ohm resistor
 #define ACTION_TIME_PERIOD 1000
-const int SERVO1_PIN = 1; //servo pin for joint 1
-const int SERVO2_PIN = 2; //servo pin for joint 2
-const int SERVO3_PIN = 3; //servo pin for joint 3
-const int SERVO0_PIN = 0; //servo pin for end effector
+const int SERVO1_PIN = 1; // servo pin for joint 1
+const int SERVO2_PIN = 2; // servo pin for joint 2
+const int SERVO3_PIN = 3; // servo pin for joint 3
+const int SERVO0_PIN = 0; // servo pin for end effector
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
   Variables                                                                      *
@@ -65,7 +65,7 @@ char messageFromPC[buffSize] = {0};
 
 // -------- Variables to hold time -------------
 unsigned long curMillis; // Variable for current time
-//unsigned long general_timer;
+// unsigned long general_timer;
 
 // -------- Variables to hold the parsed data -------------
 float floatFromPC0 = 90.0; // initial values are mid range for joint angles
@@ -93,27 +93,29 @@ ServoEasing Servo0(PCA9685_DEFAULT_ADDRESS, &Wire);
   START OF PROGRAM (Setup)                                                       *
 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-void setup() {
-  //flash LED so we know we are alive
+void setup()
+{
+  // flash LED so we know we are alive
   blinkLED();
 
-  //Setup pins
+  // Setup pins
   pinMode(LED_BUILTIN, OUTPUT); // setup built in LED for flashing
-  pinMode(BUZZER_PIN, OUTPUT); // Set buzzer pin as an output
+  pinMode(BUZZER_PIN, OUTPUT);  // Set buzzer pin as an output
 
-  //Play tone so we can tell if the board accidently reset
+  // Play tone so we can tell if the board accidently reset
   playTone();
 
-  //Begin serial communications
+  // Begin serial communications
   Serial.begin(9600);
 
-  //Wait for serial communications to start before continuing
-  while (!Serial); //delay for Leonardo
+  // Wait for serial communications to start before continuing
+  while (!Serial)
+    ; // delay for Leonardo
 
   // Just to know which program is running on my Arduino
   Serial.println(F("START " __FILE__ "\r\nVersion " VERSION " from " __DATE__));
 
-  //Attach servo to pin
+  // Attach servo to pin
   Servo1.attach(SERVO1_PIN);
   Servo2.attach(SERVO2_PIN);
   Servo3.attach(SERVO3_PIN);
@@ -124,7 +126,7 @@ void setup() {
   Servo2.setEasingType(EASE_CUBIC_IN_OUT);
   Servo3.setEasingType(EASE_CUBIC_IN_OUT);
   Servo0.setEasingType(EASE_CUBIC_IN_OUT); // end effector
-  
+
   Servo1.write(last_servoAngle_q1);
   Servo2.write(last_servoAngle_q2);
   Servo3.write(last_servoAngle_q3);
@@ -141,17 +143,18 @@ void setup() {
   MAIN PROGRAM (Loop)                                                            *
 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-void loop() {
+void loop()
+{
   // This part of the loop for the serial communication is not inside a timer -> it happens very quickly
   curMillis = millis(); // get current time
-  getDataFromPC(); // receive data from PC and save it into inputBuffer
+  getDataFromPC();      // receive data from PC and save it into inputBuffer
 
   // need if statement -> flag to say if new data is available
   if (newDataFromPC == true)
   {
-    processMessageFromPC(); // Processes text message from PC
+    processMessageFromPC();     // Processes text message from PC
     actionInstructionsFromPC(); // Arrange for things to move, beep, light up
-    replyToPC(); // Reply to PC
+    replyToPC();                // Reply to PC
   }
 
   //  // This part of the loop is inside a timer -> maybe delete
@@ -162,10 +165,7 @@ void loop() {
   //    // update timestamp
   //    general_timer = millis();
   //  }
-
-
 }
-
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
               FUNCTIONS FOR MAKING THINGS MOVE OR LIGHT UP OR BEEP!              *
@@ -173,7 +173,8 @@ void loop() {
 
 //~~~~~~~~~~~~~Fuction: Blink LED~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-void blinkLED() {
+void blinkLED()
+{
   digitalWrite(LED_BUILTIN, HIGH);
   delay(100);
   digitalWrite(LED_BUILTIN, LOW);
@@ -184,7 +185,8 @@ void blinkLED() {
 
 //~~~~~~~~~~~~~Fuction: Play Buzzer Tone~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-void playTone() {
+void playTone()
+{
   tone(BUZZER_PIN, 650, 300);
 }
 
@@ -192,9 +194,10 @@ void playTone() {
 
 //~~~~~~~~~~~~~Fuction: Action the instructions from the PC~~~~~~~~~~~~~~~~~~~~~~~
 
-void actionInstructionsFromPC() {
-  //Local variables
-  // -- joint angles
+void actionInstructionsFromPC()
+{
+  // Local variables
+  //  -- joint angles
   float servoAngle_q1 = floatFromPC1;
   float servoAngle_q2 = floatFromPC2;
   float servoAngle_q3 = floatFromPC3;
@@ -206,7 +209,8 @@ void actionInstructionsFromPC() {
   int servoTime_EE = intFromPC0;
 
   // Check if the joint angle has changed!
-  if (servoAngle_q1 != last_servoAngle_q1) {
+  if (servoAngle_q1 != last_servoAngle_q1)
+  {
     Serial.println(F("Servo 1 moving to position using interrupts"));
 
     Servo1.startEaseToD(servoAngle_q1, servoTime_q1);
@@ -216,7 +220,8 @@ void actionInstructionsFromPC() {
     //    }
   }
 
-  if (servoAngle_q2 != last_servoAngle_q2) {
+  if (servoAngle_q2 != last_servoAngle_q2)
+  {
     Serial.println(F("Servo 2 moving to position using interrupts"));
 
     Servo2.startEaseToD(servoAngle_q2, servoTime_q2);
@@ -226,8 +231,8 @@ void actionInstructionsFromPC() {
     //    }
   }
 
-
-  if (servoAngle_q3 != last_servoAngle_q3) {
+  if (servoAngle_q3 != last_servoAngle_q3)
+  {
     Serial.println(F("Servo 3 moving to position using interrupts"));
 
     Servo3.startEaseToD(servoAngle_q3, servoTime_q3);
@@ -237,7 +242,8 @@ void actionInstructionsFromPC() {
     //    }
   }
 
-  if (servoAngle_EE != last_servoAngle_EE) {
+  if (servoAngle_EE != last_servoAngle_EE)
+  {
     Serial.println(F("Servo EE moving to position using interrupts"));
 
     Servo0.startEaseToD(servoAngle_EE, servoTime_EE);
@@ -252,11 +258,9 @@ void actionInstructionsFromPC() {
   last_servoAngle_q2 = servoAngle_q2;
   last_servoAngle_q3 = servoAngle_q3;
   last_servoAngle_EE = servoAngle_EE;
-
 }
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
               FUNCTIONS FOR RECEIVING DATA VIA SERIAL MONITOR                    *
@@ -264,32 +268,38 @@ void actionInstructionsFromPC() {
 
 //~~~~~~~~~~~~~Fuction: Receive data with start and end markers~~~~~~~~~~~~~~~~~~
 
-void getDataFromPC() {
+void getDataFromPC()
+{
 
   // This function receives data from PC and saves it into inputBuffer
 
-  if (Serial.available() > 0 && newDataFromPC == false) {
+  if (Serial.available() > 0 && newDataFromPC == false)
+  {
 
     char x = Serial.read();
 
     // the order of these IF clauses is significant
 
-    if (x == endMarker) {
+    if (x == endMarker)
+    {
       readInProgress = false;
       newDataFromPC = true;
       inputBuffer[bytesRecvd] = 0;
       parseData();
     }
 
-    if (readInProgress) {
+    if (readInProgress)
+    {
       inputBuffer[bytesRecvd] = x;
-      bytesRecvd ++;
-      if (bytesRecvd == buffSize) {
+      bytesRecvd++;
+      if (bytesRecvd == buffSize)
+      {
         bytesRecvd = buffSize - 1;
       }
     }
 
-    if (x == startMarker) {
+    if (x == startMarker)
+    {
       bytesRecvd = 0;
       readInProgress = true;
     }
@@ -300,49 +310,50 @@ void getDataFromPC() {
 
 //~~~~~~~~~~~~~Fuction: Split data into known component parts~~~~~~~~~~~~~~~~~~
 
-void parseData() {
+void parseData()
+{
 
   // split the data into its parts
 
-  char * strtokIndx; // this is used by strtok() as an index
+  char *strtokIndx; // this is used by strtok() as an index
 
-  strtokIndx = strtok(inputBuffer, ",");     // get the first part - the string
-  strcpy(messageFromPC, strtokIndx); // copy it to messageFromPC
+  strtokIndx = strtok(inputBuffer, ","); // get the first part - the string
+  strcpy(messageFromPC, strtokIndx);     // copy it to messageFromPC
 
-  strtokIndx = strtok(NULL, ","); // this continues where the previous call left off
-  floatFromPC0 = atof(strtokIndx);     // convert this part to a float -> to convert to an integer we would use atoi
-
-  strtokIndx = strtok(NULL, ",");
-  floatFromPC1 = atof(strtokIndx);     // convert this part to a float
+  strtokIndx = strtok(NULL, ",");  // this continues where the previous call left off
+  floatFromPC0 = atof(strtokIndx); // convert this part to a float -> to convert to an integer we would use atoi
 
   strtokIndx = strtok(NULL, ",");
-  floatFromPC2 = atof(strtokIndx);     // convert this part to a float
+  floatFromPC1 = atof(strtokIndx); // convert this part to a float
 
   strtokIndx = strtok(NULL, ",");
-  floatFromPC3 = atof(strtokIndx);     // convert this part to a float
+  floatFromPC2 = atof(strtokIndx); // convert this part to a float
 
   strtokIndx = strtok(NULL, ",");
-  intFromPC0 = atoi(strtokIndx);     // convert this part to a int
+  floatFromPC3 = atof(strtokIndx); // convert this part to a float
 
   strtokIndx = strtok(NULL, ",");
-  intFromPC1 = atoi(strtokIndx);     // convert this part to a int
+  intFromPC0 = atoi(strtokIndx); // convert this part to a int
 
   strtokIndx = strtok(NULL, ",");
-  intFromPC2 = atoi(strtokIndx);     // convert this part to a int
+  intFromPC1 = atoi(strtokIndx); // convert this part to a int
 
   strtokIndx = strtok(NULL, ",");
-  intFromPC3 = atoi(strtokIndx);     // convert this part to a int
+  intFromPC2 = atoi(strtokIndx); // convert this part to a int
 
+  strtokIndx = strtok(NULL, ",");
+  intFromPC3 = atoi(strtokIndx); // convert this part to a int
 }
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 //~~~~~~~~~~~~~Fuction: Send message back to PC~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+void replyToPC()
+{
 
-void replyToPC() {
-
-  if (newDataFromPC) {
+  if (newDataFromPC)
+  {
     newDataFromPC = false;
     Serial.print(F("<Msg "));
     Serial.print(messageFromPC);
@@ -372,25 +383,26 @@ void replyToPC() {
 
 //~~~~~~~~~~~~~Fuction: Process the string message from the PC~~~~~~~~~~~~~~~~~~~~
 
-
-void processMessageFromPC() {
+void processMessageFromPC()
+{
 
   // this illustrates using different inputs to call different functions
   // strcmp compares two strings and returns zero if the strings are equal
 
-  if (strcmp(messageFromPC, "LED") == 0) {
+  if (strcmp(messageFromPC, "LED") == 0)
+  {
     blinkLED();
   }
 
-  if (strcmp(messageFromPC, "BUZZ") == 0) {
+  if (strcmp(messageFromPC, "BUZZ") == 0)
+  {
     playTone();
   }
 
-  if (strcmp(messageFromPC, "BUZZ") == 0) {
+  if (strcmp(messageFromPC, "BUZZ") == 0)
+  {
     playTone();
   }
-
-
 }
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
