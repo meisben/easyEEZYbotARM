@@ -2,7 +2,11 @@
 
 ### [Version 0.2-alpha](https://github.com/meisben/easyEEZYbotARM/releases)
 ![GitHub](https://img.shields.io/github/license/meisben/easyEEZYbotARM?style=flat-square)
-[![Hit Counter](https://hitcounter.pythonanywhere.com/count/tag.svg?url=https://github.com/meisben/easyEEZYbotARM)](https://github.com/brentvollebregt/hit-counter)
+![visitors](https://visitor-badge.laobi.icu/badge?page_id=meisben.easyEEZYbotARM)
+<br/>
+<br/>
+[![Stand With Ukraine](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/badges/StandWithUkraine.svg)](https://stand-with-ukraine.pp.ua)
+
 
 A python and arduino controller for the EEZYbotARM Mk1 & Mk2 (Includes 3-D kinematics).
 
