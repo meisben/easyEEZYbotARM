@@ -40,13 +40,13 @@ This code library provides functionality to control the EEZYbotARM (Mk1, Mk2) in
 ### Forward Kinematics
 The code library allows the user to easily map joint angles to an x,y,z co-ordinates, so that we know the position of the end effector
 
-The mathematical calculations for the forward kinematics can be found [here](docs/kinematics). The method is applicable to other four axis robot arms.
+The mathematical calculations for the forward kinematics can be found [here](docs/kinematics).
 ![forwardKinematics](images/forwardKinematics.png)
 
 ### Inverse Kinematics
 The code library allows the user to easily map x,y,z co-ordinates to joint angles, so that the EEZYbotARM can be controlled in 3-D space
 
-The mathematical calculations for the inverse kinematics can be found [here](docs/kinematics). The method is applicable to other four axis robot arms.
+The mathematical calculations for the inverse kinematics can be found [here](docs/kinematics).
 ![inverseKinematics](images/inverseKinematics.png)
 
 ### Simulation the robot arm, and plotting the robot arm workspace
