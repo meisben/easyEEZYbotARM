@@ -35,6 +35,8 @@ This code library provides functionality to control the EEZYbotARM (Mk1, Mk2) in
 5. Communicating with a (arduino) microcontroller
 6. Using the (arduino) microcontroller to control the movement of the robot arm servo motors
 
+==Important!== Please note this is a hobby robot arm. It should be used for learning projects only. I.e. don't expect it to pick up anything heavier than 5 grams (e.g. a glass marble).
+
 ## Overview
 
 ### Forward Kinematics
