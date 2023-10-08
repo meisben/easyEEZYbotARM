@@ -3,8 +3,6 @@
 ### [Version 0.3-alpha](https://github.com/meisben/easyEEZYbotARM/releases)
 ![GitHub](https://img.shields.io/github/license/meisben/easyEEZYbotARM?style=flat-square)
 ![Badge Hit Counter](https://visitor-badge.laobi.icu/badge?page_id=meisben.easyEEZYbotARM)
-<br/>
-<br/>
 [![Stand With Ukraine](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/badges/StandWithUkraine.svg)](https://stand-with-ukraine.pp.ua)
 
 
