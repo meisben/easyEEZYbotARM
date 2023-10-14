@@ -3,6 +3,7 @@
 ### [Version 0.3-alpha](https://github.com/meisben/easyEEZYbotARM/releases)
 ![GitHub](https://img.shields.io/github/license/meisben/easyEEZYbotARM?style=flat-square)
 ![Badge Hit Counter](https://visitor-badge.laobi.icu/badge?page_id=meisben.easyEEZYbotARM)
+[![Love and Peace](http://love-and-peace.github.io/love-and-peace/badges/base/v1.0.svg)](https://github.com/love-and-peace/love-and-peace/blob/master/versions/base/v1.0/en.md)
 [![Stand With Ukraine](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/badges/StandWithUkraine.svg)](https://stand-with-ukraine.pp.ua)
 
 

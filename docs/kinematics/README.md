@@ -26,6 +26,3 @@ The [inverse kinematic calculations](Inverse_kinematics_EEZYbotARM.pdf) are impl
 
 ![inverseKinematics](../../images/inverseKinematics.png)
 
-
-
-
